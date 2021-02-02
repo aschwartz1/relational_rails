@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   post '/shops', to: 'shops#create'
 
   get '/manufacturers', to: 'manufacturers#index'
+  get '/manufacturers/new', to: 'manufacturers#new'
+  post '/manufacturers', to: 'manufacturers#create'
 end
