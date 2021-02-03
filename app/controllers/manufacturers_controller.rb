@@ -20,7 +20,7 @@ class ManufacturersController < ApplicationController
     manufacturer.update({
       name: params[:manufacturer][:name],
       founded_in: params[:manufacturer][:founded_in],
-      in_business: params[:manufacturer][:in_business]
+      in_business: in_business?(params[:manufacturer])
     })
 
     manufacturer.save
@@ -32,7 +32,7 @@ class ManufacturersController < ApplicationController
     manufacturer = Manufacturer.new({
       name: params[:manufacturer][:name],
       founded_in: params[:manufacturer][:founded_in],
-      in_business: params[:manufacturer][:in_business]
+      in_business: in_business?(params[:manufacturer])
     })
 
     manufacturer.save
@@ -44,5 +44,11 @@ class ManufacturersController < ApplicationController
     Manufacturer.destroy(params[:id])
 
     redirect_to '/manufacturers'
+  end
+
+  private
+
+  def in_business?(manufacturer_params)
+    !manufacturer_params[:in_business].nil?
   end
 end
