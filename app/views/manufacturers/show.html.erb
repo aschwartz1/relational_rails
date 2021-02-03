@@ -1,0 +1,9 @@
+<h1><%= @manufacturer.name %></h1>
+<ul>
+  <li>Year Founded: <%= @manufacturer.founded_in %></li>
+  <li>Currently Operating?: <%= @manufacturer.in_business %></li>
+</ul>
+
+<p><a href="/manufacturers/<%= @manufacturer.id %>/edit">Update Parent</a></p>
+
+<footer><a href="/">Home</a> <a href="/manufacturers">Manufacturers</a></footer>

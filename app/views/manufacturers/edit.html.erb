@@ -1,0 +1,22 @@
+<style>
+code {
+  font-family: Consolas,"courier new";
+  color: crimson;
+  background-color: #f1f1f1;
+  padding: 2px;
+}
+</style>
+
+<h1>Update Manufacturer</h1>
+
+<form action="/manufacturers/<%= @manufacturer.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH">
+  <label for="name">Name: </label>
+  <input type="text" name="manufacturer[name]" id="name" value="<%= @manufacturer.name %>"><br>
+  <label for="founded_in">Year Founded: </label>
+  <input type="number" name="manufacturer[founded_in]" id= "founded_in" min="1900" max="<%= Date.today.year %>" value="<%= @manufacturer.founded_in %>"><br>
+  <input type="checkbox" name="manufacturer[in_business]" id="in_business" >
+  <label for="in_business"> Currently in business? **TODO how do I get this checked based on <code>@manufacturer.in_business</code>?**</label><br>
+  <button name="submit" type="submit">Update Manufacturer</button>
+</form>
