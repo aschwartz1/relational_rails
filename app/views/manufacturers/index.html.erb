@@ -1,0 +1,9 @@
+<h1>Disc Golf Disc Manufacturers</h1>
+
+<% @manufacturers.each do |manufacturer| %>
+  <h3><a href="/manufacturers/<%= manufacturer.id %>"><%= manufacturer.name %></a></h3>
+<% end %>
+
+<p><a href="/manufacturers/new">Create New Manufacturer</a></p><br>
+
+<footer><a href="/">Home</a></footer>
