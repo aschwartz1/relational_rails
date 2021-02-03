@@ -7,8 +7,6 @@ code {
 }
 </style>
 
-<h1>Update Manufacturer</h1>
-
 <form action="/manufacturers/<%= @manufacturer.id %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH">
@@ -16,7 +14,7 @@ code {
   <input type="text" name="manufacturer[name]" id="name" value="<%= @manufacturer.name %>"><br>
   <label for="founded_in">Year Founded: </label>
   <input type="number" name="manufacturer[founded_in]" id= "founded_in" min="1900" max="<%= Date.today.year %>" value="<%= @manufacturer.founded_in %>"><br>
-  <input type="checkbox" name="manufacturer[in_business]" id="in_business" >
-  <label for="in_business"> Currently in business? **TODO how do I get this checked based on <code>@manufacturer.in_business</code>?**</label><br>
+  <input type="checkbox" name="manufacturer[in_business]" id="in_business" <% if @manufacturer.in_business %>checked<% end %>>
+  <label for="in_business"> Currently in business?</label><br>
   <button name="submit" type="submit">Update Manufacturer</button>
 </form>
