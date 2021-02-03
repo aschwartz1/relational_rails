@@ -39,4 +39,10 @@ class ManufacturersController < ApplicationController
 
     redirect_to '/manufacturers'
   end
+
+  def destroy
+    Manufacturer.destroy(params[:id])
+
+    redirect_to '/manufacturers'
+  end
 end

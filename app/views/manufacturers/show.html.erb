@@ -1,9 +1,16 @@
 <h1><%= @manufacturer.name %></h1>
+
 <ul>
   <li>Year Founded: <%= @manufacturer.founded_in %></li>
   <li>Currently Operating?: <%= @manufacturer.in_business %></li>
 </ul>
 
-<p><a href="/manufacturers/<%= @manufacturer.id %>/edit">Update Parent</a></p>
+<p><a href="/manufacturers/<%= @manufacturer.id %>/edit">Update Manufacturer</a></p>
+
+<form action="/manufacturers/<%= @manufacturer.id %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Manufacturer">
+</form><br>
 
 <footer><a href="/">Home</a> <a href="/manufacturers">Manufacturers</a></footer>
