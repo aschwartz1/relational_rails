@@ -1,13 +1,23 @@
 class ShopsController < ApplicationController
   def index
-    @shops = ['Shop 1', 'Shop 2', 'Shop 3']
+    @shops = Shop.all
   end
 
   def new
   end
 
   def create
-    params[:shop][:name]
-    params[:shop][:liquor_license]
+    shop = Shop.new({
+      name: params[:shop][:name],
+      liquor_license: params[:shop][:liquor_license]
+      })
+
+    shop.save
+
+    redirect_to '/shops'
+  end
+
+  def show
+    @shop = Shop.find(params[:id])
   end
 end
