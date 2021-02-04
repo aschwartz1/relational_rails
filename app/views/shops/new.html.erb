@@ -2,7 +2,9 @@
   <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
   <p>Enter a new shop:</p>
   <input type='text' name='shop[name]' /></br>
-  <input type='checkbox' name='shop[liquor_license]' value="License"/></br>
-  <label for='shop[liquor_license]'>Does this shop have a liquor license?</label></br>
-  <input type='submit'/>
+  <p>What is this shop's current revenue?</p>
+  <input type='text' name='shop[revenue]' /></br>
+  <label for='shop[liquor_license]'>Check this box if this shop has a liquor license:</label></br>
+  <input type='checkbox' name='shop[liquor_license]' /></br>
+  <button type='submit'>Create Shop</button>
 </form>
