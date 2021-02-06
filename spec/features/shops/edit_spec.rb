@@ -15,13 +15,16 @@ RSpec.describe 'Shops Edit,' do
         expect(page).to have_field('license', checked: true)
       end
 
-      it 'can edit form' do
+      it 'I can edit form' do
         visit "/shops/#{@spicy.id}/edit"
 
         fill_in 'name', with: "Spicy"
         fill_in 'revenue', with: "$40000"
 
         uncheck 'license'
+
+        click_button 'Update Shop'
+        expect(current_path).to eq("/shops/#{@spicy.id}")
       end
     end
   end
