@@ -3,6 +3,7 @@
 <h1><%= @shop.name %></h1>
 <p><h2>Shop ID:<%= @shop.id %></p></h2>
 <p><%= "This business has a liquor license" if @shop.liquor_license == true %></p>
-<p><%= "This business was created at:" %></p>
-<p><%= "This business was updated at:" %></p>
-<p><%= "This business' revenue is:" %></p>
+<p>This business was updated at: <%= @shop.created_at %></p>
+<p>This business was updated at: <%= @shop.updated_at %></p>
+<p>This business' revenue is: <%= @shop.revenue %></p>
+<a href="/shops/<%= @shop.id %>/edit">Update Shop</a>
