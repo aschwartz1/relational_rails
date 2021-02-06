@@ -32,5 +32,13 @@ RSpec.describe 'Manufacturers Show Page' do
       click_link('Manufacturers')
       expect(current_path).to eq('/manufacturers')
     end
+
+    it 'shows a link to edit manufacturer' do
+      visit "/manufacturers/#{@innova.id}"
+
+      expect(page).to have_link('Update Manufacturer')
+      click_link('Update Manufacturer')
+      expect(current_path).to eq("/manufacturers/#{@innova.id}/edit")
+    end
   end
 end
