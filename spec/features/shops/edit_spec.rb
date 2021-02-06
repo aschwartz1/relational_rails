@@ -11,7 +11,7 @@ RSpec.describe 'Shops Edit,' do
         visit "/shops/#{@spicy.id}/edit"
 
         expect(find_field('name').value).to eq("Spicy Pickle")
-        expect(find_field('revenue').value).to eq(nil)
+        expect(find_field('revenue').value).to eq("")
         expect(page).to have_field('license', checked: true)
       end
 

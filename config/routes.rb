@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/shops/:id/edit', to: 'shops#edit'
   post '/shops', to: 'shops#create'
   patch '/shops/:id', to: 'shops#update'
+  get '/shops/:id/delete/', to: 'shops#destroy'
 
   get '/manufacturers', to: 'manufacturers#index'
   get '/manufacturers/new', to: 'manufacturers#new'

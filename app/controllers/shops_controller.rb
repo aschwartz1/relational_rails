@@ -40,4 +40,12 @@ class ShopsController < ApplicationController
     redirect_to "/shops/#{shop.id}"
   end
 
+  def destroy
+    shop = Shop.find(params[:id])
+
+    shop.destroy
+
+    redirect_to "/shops/"
+  end
+
 end
