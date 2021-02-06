@@ -17,7 +17,7 @@ RSpec.describe 'Manufacturers Show Page' do
       expect(page).to have_content(@innova.updated_at)
     end
 
-    it 'can navigate back home' do
+    it 'can navigate home' do
       visit "/manufacturers/#{@innova.id}"
 
       expect(page).to have_link('Home')
