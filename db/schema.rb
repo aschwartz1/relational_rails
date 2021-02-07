@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 2021_02_03_012924) do
   create_table "shops", force: :cascade do |t|
     t.string "name"
     t.boolean "liquor_license"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer "revenue"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
