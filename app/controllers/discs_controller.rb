@@ -23,17 +23,12 @@ class DiscsController < ApplicationController
     disc.save
 
     redirect_to "/discs/#{disc.id}"
-    # manufacturer = Manufacturer.find(params[:id])
+  end
 
-    # manufacturer.update({
-    #   name: params[:manufacturer][:name],
-    #   founded_in: params[:manufacturer][:founded_in],
-    #   in_business: in_business?(params[:manufacturer])
-    # })
+  def destroy
+    Disc.destroy(params[:id])
 
-    # manufacturer.save
-
-    # redirect_to "/manufacturers/#{manufacturer.id}"
+    redirect_to '/discs'
   end
 
   private

@@ -27,6 +27,16 @@ RSpec.describe 'Discs Page' do
       expect(current_path).to eq "/discs/#{@teebird.id}/edit"
     end
 
+    it 'shows a link to delete' do
+      visit "/discs/#{@teebird.id}"
+
+      expect(page).to have_button('Delete Disc')
+      click_button('Delete Disc')
+
+      expect(current_path).to eq '/discs'
+      expect(page).not_to have_content(@teebird.name)
+    end
+
     it 'can navigate home' do
       visit "/discs"
 

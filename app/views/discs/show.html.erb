@@ -11,4 +11,10 @@
 
 <p><a href="/discs/<%= @disc.id %>/edit">Update Disc</a></p>
 
+<form action="/discs/<%= @disc.id %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Disc">
+</form><br>
+
 <footer><a href="/">Home</a></footer>
