@@ -11,7 +11,7 @@ RSpec.describe 'Shops show' do
 
       expect(page).to have_content(@spicy.name)
       expect(page).to have_content(@spicy.id)
-      expect(page).to have_content("This business has a liquor license")
+      expect(page).to have_content("This shop has a liquor license")
       expect(page).to have_content(@spicy.revenue)
       expect(page).to have_content(@spicy.created_at)
       expect(page).to have_content(@spicy.updated_at)
@@ -24,8 +24,8 @@ RSpec.describe 'Shops show' do
     end
 
     it 'shows link to delete shop' do
-      expect(page).to have_link("Delete Shop")
-      click_link "Delete Shop"
+      expect(page).to have_button("Delete Shop")
+      click_button "Delete Shop"
     end
   end
 end

@@ -14,7 +14,6 @@ class ShopsController < ApplicationController
       })
 
     shop.save
-
     redirect_to '/shops'
   end
 
@@ -28,7 +27,6 @@ class ShopsController < ApplicationController
 
   def update
     shop = Shop.find(params[:id])
-
       shop.update({
       name: params[:shop][:name],
       revenue: params[:shop][:revenue],
@@ -36,16 +34,12 @@ class ShopsController < ApplicationController
       })
 
     shop.save
-
     redirect_to "/shops/#{shop.id}"
   end
 
   def destroy
-    shop = Shop.find(params[:id])
-
-    shop.destroy
-
-    redirect_to "/shops/"
+    Shop.destroy(params[:id])
+    redirect_to '/shops'
   end
 
 end
