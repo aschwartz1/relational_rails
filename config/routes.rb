@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   get '/discs', to: 'discs#index'
   get '/discs/:id', to: 'discs#show'
   get '/discs/:id/edit', to: 'discs#edit'
+  patch '/discs/:id', to: 'discs#update'
 end
