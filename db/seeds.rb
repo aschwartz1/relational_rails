@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Manufacturer.destroy_all
+Disc.destroy_all
+
+innova = Manufacturer.create!(name: 'Innova', founded_in: 1983, in_business: true)
+axiom = Manufacturer.create!(name: 'Axiom', founded_in: 2014, in_business: true)
+quest = Manufacturer.create!(name: 'Quest AT', founded_in: 2006, in_business: false)
+
+innova.discs.create!(name: 'Aviar', max_weight: 176, in_production: true)
+innova.discs.create!(name: 'Teebird', max_weight: 176, in_production: true)
+
+axiom.discs.create!(name: 'Envy', max_weight: 174, in_production: true)
+axiom.discs.create!(name: 'Proxy', max_weight: 174, in_production: true)
+
+quest.discs.create!(name: 'Raging Inferno DT', max_weight: 175, in_production: false)
+quest.discs.create!(name: '10 Meter Crossfire', max_weight: 176, in_production: false)
