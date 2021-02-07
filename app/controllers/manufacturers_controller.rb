@@ -46,6 +46,11 @@ class ManufacturersController < ApplicationController
     redirect_to '/manufacturers'
   end
 
+  def discs
+    @manufacturer = Manufacturer.find(params[:id])
+    @discs = @manufacturer.discs
+  end
+
   private
 
   def in_business?(manufacturer_params)
