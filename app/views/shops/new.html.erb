@@ -1,10 +1,10 @@
 <form action="/shops" method="post">
   <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
   <p>Enter a new shop:</p>
-  <input type='text' name='shop[name]' /></br>
+  <input type='text' name='shop[name]' id='name'/></br>
   <p>What is this shop's current revenue?</p>
-  <input type='text' name='shop[revenue]' /></br>
+  <input type='text' name='shop[revenue]' id='revenue' /></br>
   <label for='shop[liquor_license]'>Check this box if this shop has a liquor license:</label></br>
-  <input type='checkbox' name='shop[liquor_license]' /></br>
-  <button type='submit'>Create Shop</button>
+  <input type='checkbox' name='shop[liquor_license]' id='license'/></br>
+  <button type='submit' id='create_button'>Create Shop</button>
 </form>
