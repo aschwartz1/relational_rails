@@ -17,20 +17,12 @@ RSpec.describe 'Manufacturers Show Page' do
       expect(page).to have_content(@innova.updated_at)
     end
 
-    it 'can navigate home' do
+    it 'shows a link to that manufactuer\'s discs' do
       visit "/manufacturers/#{@innova.id}"
 
-      expect(page).to have_link('Home')
-      click_link('Home')
-      expect(current_path).to eq '/'
-    end
-
-    it 'can navigate to manufacturers index' do
-      visit "/manufacturers/#{@innova.id}"
-
-      expect(page).to have_link('Manufacturers')
-      click_link('Manufacturers')
-      expect(current_path).to eq '/manufacturers'
+      expect(page).to have_link('Discs Catalog')
+      click_link('Discs Catalog')
+      expect(current_path).to eq "/manufacturers/#{@innova.id}/discs"
     end
 
     it 'shows a link to edit manufacturer' do
@@ -48,6 +40,22 @@ RSpec.describe 'Manufacturers Show Page' do
       click_button('Delete Manufacturer')
       expect(current_path).to eq '/manufacturers'
       expect(page).not_to have_content('@innova.namme')
+    end
+
+    it 'can navigate home' do
+      visit "/manufacturers/#{@innova.id}"
+
+      expect(page).to have_link('Home')
+      click_link('Home')
+      expect(current_path).to eq '/'
+    end
+
+    it 'can navigate to manufacturers index' do
+      visit "/manufacturers/#{@innova.id}"
+
+      expect(page).to have_link('Manufacturers')
+      click_link('Manufacturers')
+      expect(current_path).to eq '/manufacturers'
     end
   end
 end
