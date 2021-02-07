@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   post '/manufacturers', to: 'manufacturers#create'
   patch '/manufacturers/:id', to: 'manufacturers#update'
   delete '/manufacturers/:id', to: 'manufacturers#destroy'
+
+  get '/discs', to: 'discs#index'
 end
