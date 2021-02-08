@@ -7,8 +7,24 @@ class DiscsController < ApplicationController
     @disc = Disc.find(params[:id])
   end
 
+  def new
+    @manufacturer = Manufacturer.find(params[:manufacturer_id])
+  end
+
   def edit
     @disc = Disc.find(params[:id])
+  end
+
+  def create
+    @manufacturer = Manufacturer.find(params[:manufacturer_id])
+
+    @manufacturer.discs.create!({
+      name: params[:disc][:name],
+      max_weight: params[:disc][:max_weight],
+      in_production: in_production?(params)
+    })
+
+    redirect_to "/manufacturers/#{@manufacturer.id}/discs"
   end
 
   def update
