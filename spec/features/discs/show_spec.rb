@@ -4,12 +4,11 @@ RSpec.describe 'Discs Page' do
   before :each do
       @innova = Manufacturer.create!(name: 'Innova', founded_in: 1983, in_business: true)
       @teebird = @innova.discs.create!(name: 'Teebird', max_weight: 175, in_production: true)
-      @wraith = @innova.discs.create!(name: 'Wraith', max_weight: 175, in_production: true)
   end
 
   describe 'as a visitor' do
-    it 'shows info for each disc they produce' do
-      visit "discs/#{@teebird.id}"
+    it 'shows info for that disc' do
+      visit "/discs/#{@teebird.id}"
 
       expect(page).to have_content(@teebird.name)
       expect(page).to have_content(@innova.name)
@@ -18,6 +17,24 @@ RSpec.describe 'Discs Page' do
       expect(page).to have_content(@teebird.in_production)
       expect(page).to have_content(@teebird.created_at)
       expect(page).to have_content(@teebird.updated_at)
+    end
+
+    it 'shows a link to update' do
+      visit "/discs/#{@teebird.id}"
+
+      expect(page).to have_link('Update Disc')
+      click_link('Update Disc')
+      expect(current_path).to eq "/discs/#{@teebird.id}/edit"
+    end
+
+    it 'shows a link to delete' do
+      visit "/discs/#{@teebird.id}"
+
+      expect(page).to have_button('Delete Disc')
+      click_button('Delete Disc')
+
+      expect(current_path).to eq '/discs'
+      expect(page).not_to have_content(@teebird.name)
     end
 
     it 'can navigate home' do

@@ -1,0 +1,11 @@
+<form action="/discs/<%= @disc.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH">
+  <label for="form_name">Name: </label>
+  <input type="text" name="disc[name]" id="form_name" value="<%= @disc.name %>"><br>
+  <label for="form_max_weight">Max Weight: </label>
+  <input type="number" name="disc[max_weight]" id= "form_max_weight" min="0" max="200" value="<%= @disc.max_weight %>"><br>
+  <input type="checkbox" name="disc[in_production]" id="form_in_production" <% if @disc.in_production %>checked<% end %>>
+  <label for="form_in_production"> Currently in production?</label><br>
+  <button name="submit" type="submit">Update Disc</button>
+</form>
