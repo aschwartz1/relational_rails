@@ -28,4 +28,20 @@ describe Manufacturer, type: :model do
       expect(Manufacturer.order_by_creation).to eq(expected)
     end
   end
+
+  describe 'instance methods' do
+    it '#disc_count' do
+      axiom = Manufacturer.create!(name: 'Axiom', founded_in: 2014, in_business: true)
+      axiom.discs.create!(name: 'Envy', max_weight: 174, in_production: true)
+      axiom.discs.create!(name: 'Proxy', max_weight: 174, in_production: true)
+
+      expect(axiom.disc_count).to eq(2)
+    end
+
+    it '#disc_count can be 0' do
+      axiom = Manufacturer.create!(name: 'Axiom', founded_in: 2014, in_business: true)
+
+      expect(axiom.disc_count).to eq(0)
+    end
+  end
 end

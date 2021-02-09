@@ -6,4 +6,8 @@ class Manufacturer < ApplicationRecord
   def self.order_by_creation
     order(:created_at)
   end
+
+  def disc_count
+    discs.length
+  end
 end
