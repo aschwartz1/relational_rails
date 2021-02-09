@@ -2,6 +2,7 @@
 
 <% @manufacturers.each do |manufacturer| %>
   <h3><a href="/manufacturers/<%= manufacturer.id %>"><%= manufacturer.name %></a></h3>
+  <p class='manufacturer_created_at'><%= manufacturer.created_at %></p>
 <% end %>
 
 <p><a href="/manufacturers/new">New Manufacturer</a></p><br>

@@ -1,6 +1,6 @@
 class ManufacturersController < ApplicationController
   def index
-    @manufacturers = Manufacturer.all
+    @manufacturers = Manufacturer.order_by_creation
   end
 
   def show
