@@ -3,7 +3,7 @@ class Manufacturer < ApplicationRecord
 
   validates_presence_of :name
 
-  def discs_ordered_by_creation
-    discs.order(:created_at)
+  def self.order_by_creation
+    order(:created_at)
   end
 end

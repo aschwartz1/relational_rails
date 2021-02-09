@@ -10,15 +10,22 @@ describe Manufacturer, type: :model do
   end
 
   describe 'class methods' do
-    it '.discs_ordered_by_creation' do
-      axiom = Manufacturer.create!(name: 'Axiom', founded_in: 2014, in_business: true)
-      axiom.discs.create!(name: 'Envy', max_weight: 174, in_production: true)
-      axiom.discs.create!(name: 'Proxy', max_weight: 174, in_production: true)
+    it '.all_ordered_by_creation' do
+      axiom = Manufacturer.create!(
+          name: 'Axiom',
+          founded_in: 2014,
+          in_business: true,
+          created_at: DateTime.parse('01/01/2020'))
 
-      expected = axiom.discs.order(:created_at)
-      actual = axiom.discs_ordered_by_creation
+      innova = Manufacturer.create!(
+        name: 'Innova',
+        founded_in: 1983,
+        in_business: true,
+        created_at: DateTime.parse('12/12/2019'))
 
-      expect(actual).to eq expected
+      expected = Manufacturer.order(:created_at)
+
+      expect(Manufacturer.order_by_creation).to eq(expected)
     end
   end
 end
