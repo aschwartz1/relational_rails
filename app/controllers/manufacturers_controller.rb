@@ -47,14 +47,19 @@ class ManufacturersController < ApplicationController
   end
 
   def discs
-    # @manufacturer = Manufacturer.find(params[:id])
-    # @discs = @manufacturer.discs
-
     @manufacturer = Manufacturer.find(params[:id])
-    if (params[:filter_max_weight])
-      @discs = @manufacturer.discs_above_weight(params[:filter_max_weight])
+    if (params[:sort])
+      if (params[:filter_max_weight])
+        @discs = @manufacturer.discs_above_weight_alpha_sort(params[:filter_max_weight])
+      else
+        @discs = @manufacturer.discs_alpha_sort
+      end
     else
-      @discs = @manufacturer.discs
+      if (params[:filter_max_weight])
+        @discs = @manufacturer.discs_above_weight(params[:filter_max_weight])
+      else
+        @discs = @manufacturer.discs
+      end
     end
   end
 

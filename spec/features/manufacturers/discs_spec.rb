@@ -44,18 +44,35 @@ RSpec.describe 'Manufacturer Discs Page' do
       expect(page).to_not have_content(@teebird.name)
     end
 
-    # TODO: copy above test except w/ 175 (test > vs >= edge case). Test should be the exact same.
+    it 'max weight filter operates exclusively' do
+      fill_in 'filter_max_weight', with: 180
+
+      click_button 'Filter'
+      expect(current_path).to eq("/manufacturers/#{@innova.id}/discs")
+      expect(page).to_not have_content(@aero.name)
+      expect(page).to_not have_content(@wraith.name)
+      expect(page).to_not have_content(@teebird.name)
+    end
+
+    it 'shows a link to sort discs alphabetically' do
+      expect(page).to have_link('Sort Alphabetically')
+      click_link('Sort Alphabetically')
+      expect(current_path).to eq("/manufacturers/#{@innova.id}/discs")
+
+      actual_records = page.all('a.disc_link').map(&:text)
+      expect(actual_records).to eq(['Aero', 'Teebird', 'Wraith'])
+    end
 
     it 'shows link to create a new disc' do
       expect(page).to have_link('Create Disc')
       click_link('Create Disc')
-      expect(current_path).to eq "/manufacturers/#{@innova.id}/discs/new"
+      expect(current_path).to eq("/manufacturers/#{@innova.id}/discs/new")
     end
 
     it 'can navigate home' do
       expect(page).to have_link('Home')
       click_link('Home')
-      expect(current_path).to eq '/'
+      expect(current_path).to eq('/')
     end
   end
 end

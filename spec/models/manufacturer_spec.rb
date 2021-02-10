@@ -51,5 +51,23 @@ describe Manufacturer, type: :model do
 
       expect(axiom.discs_above_weight(175)).to eq([fake])
     end
+
+    it '#discs_above_weight_alpha_sort' do
+      axiom = Manufacturer.create!(name: 'Axiom', founded_in: 2014, in_business: true)
+      fake = axiom.discs.create!(name: 'Fake', max_weight: 170, in_production: true)
+      proxy = axiom.discs.create!(name: 'Proxy', max_weight: 174, in_production: true)
+      alias_ = axiom.discs.create!(name: 'Alias', max_weight: 178, in_production: false)
+
+      expect(axiom.discs_above_weight_alpha_sort(172)).to eq([alias_, proxy])
+    end
+
+    it '#discs_alpha_sort' do
+      axiom = Manufacturer.create!(name: 'Axiom', founded_in: 2014, in_business: true)
+      proxy = axiom.discs.create!(name: 'Proxy', max_weight: 174, in_production: true)
+      envy = axiom.discs.create!(name: 'Envy', max_weight: 174, in_production: true)
+      alias_ = axiom.discs.create!(name: 'Alias', max_weight: 178, in_production: false)
+
+      expect(axiom.discs_alpha_sort).to eq([alias_, envy, proxy])
+    end
   end
 end
