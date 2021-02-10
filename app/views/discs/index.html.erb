@@ -1,7 +1,15 @@
-<h1>Disc Golf Discs</h1>
+<style>
+  .less-header {
+    font-weight:normal;
+  }
+</style>
 
+<h1>Disc Golf Discs</h1>
+<br>
 <% @discs.each do |disc| %>
-  <h3><a href="/discs/<%= disc.id %>"><%= disc.name %></a></h3>
+  <h3><a href="/discs/<%= disc.id %>"><%= disc.name %></a>
+    - <span class="less-header"><%= link_to 'Edit', "/discs/#{disc.id}/edit", class: 'disc-edit' %></span>
+  </h3>
   <ul>
     <li>ID: <%= disc.id %></li>
     <li>Max Weight: <%= disc.max_weight %></li>
@@ -9,6 +17,9 @@
     <li>Record Created At: <%= disc.created_at %></li>
     <li>Record Last Updated At: <%= disc.updated_at %></li>
   </ul>
+  <%= button_to 'Delete', "/discs/#{disc.id}", method: :delete, class: 'disc-delete' %>
+  <hr>
 <% end %>
 
 <footer><a href="/">Home</a></footer>
+

@@ -33,6 +33,27 @@ RSpec.describe 'Discs Index Page' do
       expect(page).to_not have_content(@moray.name)
     end
 
+    it 'shows an edit link next to each disc' do
+      visit '/discs'
+
+      edit_links = page.all('a.disc-edit')
+      expect(edit_links.length).to eq(2)
+      edit_links.first.click
+      expect(current_path).to match(%r{/discs/\d+/edit})
+    end
+
+    it 'shows a delete button next to each disc' do
+      visit '/discs'
+
+      delete_buttons = page.all('.disc-delete')
+      expect(delete_buttons.length).to eq(2)
+
+      delete_buttons.first.click
+      expect(current_path).to eq('/discs')
+      delete_buttons = page.all('.disc-delete')
+      expect(delete_buttons.length).to eq(1)
+    end
+
     it 'can navigate home' do
       visit "/discs"
 
