@@ -1,7 +1,15 @@
 <h1><%= @manufacturer.name %> Discs</h1>
 
+<%= form_with url: "/manufacturers/#{@manufacturer.id}/discs", method: :get, local: true do |form| %>
+  <%= form.label(:filter_max_weight, 'Show only max weight above: ') %>
+  <%= form.text_field(:filter_max_weight) %>
+  <%= form.submit('Filter') %>
+<% end %>
+
+<%= link_to 'Sort Alphabetically', "/manufacturers/#{@manufacturer.id}/discs?sort=true" %>
+
 <% @discs.each do |disc| %>
-  <h3><a href="/discs/<%= disc.id %>"><%= disc.name %></a></h3>
+  <h3><a class='disc_link' href="/discs/<%= disc.id %>"><%= disc.name %></a></h3>
   <ul>
     <li>ID: <%= disc.id %></li>
     <li>Max Weight: <%= disc.max_weight %></li>

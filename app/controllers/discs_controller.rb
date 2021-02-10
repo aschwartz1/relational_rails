@@ -1,6 +1,6 @@
 class DiscsController < ApplicationController
   def index
-    @discs = Disc.all
+    @discs = Disc.in_production
   end
 
   def show

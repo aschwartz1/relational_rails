@@ -1,10 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe 'Manufacturers Index Page' do
+RSpec.describe 'Discs Index Page' do
   before :each do
       @innova = Manufacturer.create!(name: 'Innova', founded_in: 1983, in_business: true)
       @teebird = @innova.discs.create!(name: 'Teebird', max_weight: 175, in_production: true)
       @wraith = @innova.discs.create!(name: 'Wraith', max_weight: 175, in_production: true)
+      @moray = @innova.discs.create!(name: 'Moray', max_weight: 179, in_production: false)
   end
 
   describe 'as a visitor' do
@@ -24,6 +25,12 @@ RSpec.describe 'Manufacturers Index Page' do
       expect(page).to have_content(@wraith.in_production)
       expect(page).to have_content(@wraith.created_at)
       expect(page).to have_content(@wraith.updated_at)
+    end
+
+    it 'only shows in_production discs' do
+      visit '/discs'
+
+      expect(page).to_not have_content(@moray.name)
     end
 
     it 'can navigate home' do

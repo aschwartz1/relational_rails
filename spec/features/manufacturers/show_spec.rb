@@ -17,6 +17,12 @@ RSpec.describe 'Manufacturers Show Page' do
       expect(page).to have_content(@innova.updated_at)
     end
 
+    it 'shows count of manufacturer\'s discs' do
+      visit "/manufacturers/#{@innova.id}"
+
+      expect(find_by_id('disc_count').text.to_i).to eq(@innova.disc_count)
+    end
+
     it 'shows a link to that manufactuer\'s discs' do
       visit "/manufacturers/#{@innova.id}"
 

@@ -6,7 +6,7 @@
   <li>Currently Operating?: <%= @manufacturer.in_business %></li>
   <li>Record Created At: <%= @manufacturer.created_at %></li>
   <li>Record Last Updated At: <%= @manufacturer.updated_at %></li>
-  <li><a href="/manufacturers/<%= @manufacturer.id %>/discs">Discs Catalog</a></li>
+  <li><a href="/manufacturers/<%= @manufacturer.id %>/discs">Discs Catalog (<span id="disc_count"><%= @manufacturer.disc_count %></span> Total)</a></li>
 </ul>
 
 <p><a href="/manufacturers/<%= @manufacturer.id %>/edit">Update Manufacturer</a></p>

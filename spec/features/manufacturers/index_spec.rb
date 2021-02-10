@@ -14,6 +14,17 @@ RSpec.describe 'Manufacturers Index Page' do
       expect(page).to have_content(@quest.name)
     end
 
+    it 'manufacturers are ordered by creation date' do
+      # Fudge created_at for one of the records
+      @quest.created_at = DateTime.parse('01/01/2021')
+      @quest.save
+
+      visit '/manufacturers'
+
+      actual_created_ats = page.all('p.manufacturer_created_at').map(&:text)
+      expect(actual_created_ats).to eq([@innova.created_at.to_s, @quest.created_at.to_s].sort)
+    end
+
     it 'shows link to create a new record' do
       visit '/manufacturers'
 
