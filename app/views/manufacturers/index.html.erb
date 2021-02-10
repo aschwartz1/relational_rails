@@ -1,8 +1,16 @@
+<style>
+.less-header {
+  font-weight:normal;
+}
+</style>
+
 <h1>Disc Golf Disc Manufacturers</h1>
 
 <% @manufacturers.each do |manufacturer| %>
-  <h3><a href="/manufacturers/<%= manufacturer.id %>"><%= manufacturer.name %></a></h3>
-  <p class='manufacturer_created_at'><%= manufacturer.created_at %></p>
+  <h3><a href="/manufacturers/<%= manufacturer.id %>"><%= manufacturer.name %></a>
+    - <span class="less-header"><a class="manufacturer-edit" href="/manufacturers/<%= manufacturer.id %>/edit">Edit</a></span>
+  </h3>
+  <p class='manufacturer-created-at'><%= manufacturer.created_at %></p>
 <% end %>
 
 <p><a href="/manufacturers/new">New Manufacturer</a></p><br>

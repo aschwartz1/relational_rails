@@ -21,7 +21,7 @@ RSpec.describe 'Manufacturers Index Page' do
 
       visit '/manufacturers'
 
-      actual_created_ats = page.all('p.manufacturer_created_at').map(&:text)
+      actual_created_ats = page.all('p.manufacturer-created-at').map(&:text)
       expect(actual_created_ats).to eq([@innova.created_at.to_s, @quest.created_at.to_s].sort)
     end
 
@@ -33,8 +33,17 @@ RSpec.describe 'Manufacturers Index Page' do
       expect(current_path).to eq('/manufacturers/new')
     end
 
+    it 'shows an edit link next to each manufacturer' do
+      visit '/manufacturers'
+
+      edit_links = page.all('a.manufacturer-edit')
+      expect(edit_links.length).to eq(2)
+      edit_links.first.click
+      expect(current_path).to match(%r{/manufacturers/\d+/edit})
+    end
+
     it 'can navigate home' do
-      visit "/manufacturers/#{@innova.id}"
+      visit "/manufacturers"
 
       expect(page).to have_link('Home')
       click_link('Home')
