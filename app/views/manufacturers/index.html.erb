@@ -5,13 +5,14 @@
 </style>
 
 <h1>Disc Golf Disc Manufacturers</h1>
-
+<br>
 <% @manufacturers.each do |manufacturer| %>
   <h3><a href="/manufacturers/<%= manufacturer.id %>"><%= manufacturer.name %></a>
     - <span class="less-header"><%= link_to 'Edit', "/manufacturers/#{manufacturer.id}/edit", class: 'manufacturer-edit' %></span>
   </h3>
-
   <p class='manufacturer-created-at'><%= manufacturer.created_at %></p>
+  <%= button_to 'Delete', "/manufacturers/#{manufacturer.id}", method: :delete, class: 'manufacturer-delete' %>
+  <hr>
 <% end %>
 
 <p><a href="/manufacturers/new">New Manufacturer</a></p><br>

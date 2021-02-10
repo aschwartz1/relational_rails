@@ -42,6 +42,18 @@ RSpec.describe 'Manufacturers Index Page' do
       expect(current_path).to match(%r{/manufacturers/\d+/edit})
     end
 
+    it 'shows a delete button next to each manufacturer' do
+      visit '/manufacturers'
+
+      delete_buttons = page.all('.manufacturer-delete')
+      expect(delete_buttons.length).to eq(2)
+
+      delete_buttons.first.click
+      expect(current_path).to eq('/manufacturers')
+      delete_buttons = page.all('.manufacturer-delete')
+      expect(delete_buttons.length).to eq(1)
+    end
+
     it 'can navigate home' do
       visit "/manufacturers"
 
