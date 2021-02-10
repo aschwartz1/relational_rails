@@ -10,4 +10,8 @@ class Manufacturer < ApplicationRecord
   def disc_count
     discs.length
   end
+
+  def discs_above_weight(max_weight)
+    discs.where("max_weight > #{max_weight}")
+  end
 end

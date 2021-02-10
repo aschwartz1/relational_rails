@@ -47,8 +47,15 @@ class ManufacturersController < ApplicationController
   end
 
   def discs
+    # @manufacturer = Manufacturer.find(params[:id])
+    # @discs = @manufacturer.discs
+
     @manufacturer = Manufacturer.find(params[:id])
-    @discs = @manufacturer.discs
+    if (params[:filter_max_weight])
+      @discs = @manufacturer.discs_above_weight(params[:filter_max_weight])
+    else
+      @discs = @manufacturer.discs
+    end
   end
 
   private
