@@ -55,13 +55,5 @@ RSpec.describe 'Manufacturers Show Page' do
       click_link('Home')
       expect(current_path).to eq '/'
     end
-
-    it 'can navigate to manufacturers index' do
-      visit "/manufacturers/#{@innova.id}"
-
-      expect(page).to have_link('Manufacturers')
-      click_link('Manufacturers')
-      expect(current_path).to eq '/manufacturers'
-    end
   end
 end
