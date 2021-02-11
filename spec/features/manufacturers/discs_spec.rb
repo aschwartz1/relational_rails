@@ -34,6 +34,23 @@ RSpec.describe 'Manufacturer Discs Page' do
       expect(page).to have_content(@aero.updated_at)
     end
 
+    it 'shows an edit link next to each disc' do
+      edit_links = page.all('a.disc-edit')
+      expect(edit_links.length).to eq(3)
+      edit_links.first.click
+      expect(current_path).to match(%r{/discs/\d+/edit})
+    end
+
+    it 'shows a delete button next to each disc' do
+      delete_buttons = page.all('.disc-delete')
+      expect(delete_buttons.length).to eq(3)
+
+      delete_buttons.first.click
+      expect(current_path).to eq('/discs')
+      delete_buttons = page.all('.disc-delete')
+      expect(delete_buttons.length).to eq(2)
+    end
+
     it 'shows form to filter discs by max weight' do
       fill_in 'filter_max_weight', with: 176
 
