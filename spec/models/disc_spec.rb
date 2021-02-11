@@ -6,7 +6,7 @@ describe Disc, type: :model do
   end
 
   describe 'class methods' do
-    it '.in_production' do
+    it '::in_production' do
       axiom = Manufacturer.create!(name: 'Axiom', founded_in: 2014, in_business: true)
       innova = Manufacturer.create!(name: 'Innova', founded_in: 1983, in_business: true)
       envy = axiom.discs.create!(name: 'Envy', max_weight: 174, in_production: true)

@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+      .less-header {
+        font-weight:normal;
+      }
+    </style>
     <title>RelationalRails</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +16,7 @@
 
   <body>
     <header>
+      <%= link_to 'Home', '/' %>
       <%= link_to 'Discs', '/discs' %>
       <%= link_to 'Manufacturers', '/manufacturers' %>
     </header>
