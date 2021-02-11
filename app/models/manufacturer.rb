@@ -18,8 +18,4 @@ class Manufacturer < ApplicationRecord
   def discs_above_weight(max_weight)
     discs.where("max_weight > #{max_weight}")
   end
-
-  def discs_above_weight_alpha_sort(max_weight)
-    discs.where("max_weight > #{max_weight}").order(:name)
-  end
 end

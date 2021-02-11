@@ -10,7 +10,7 @@ describe Manufacturer, type: :model do
   end
 
   describe 'class methods' do
-    it '.all_ordered_by_creation' do
+    it '::all_ordered_by_creation' do
       axiom = Manufacturer.create!(
           name: 'Axiom',
           founded_in: 2014,
@@ -50,15 +50,6 @@ describe Manufacturer, type: :model do
       fake = axiom.discs.create!(name: 'Fake', max_weight: 180, in_production: true)
 
       expect(axiom.discs_above_weight(175)).to eq([fake])
-    end
-
-    it '#discs_above_weight_alpha_sort' do
-      axiom = Manufacturer.create!(name: 'Axiom', founded_in: 2014, in_business: true)
-      fake = axiom.discs.create!(name: 'Fake', max_weight: 170, in_production: true)
-      proxy = axiom.discs.create!(name: 'Proxy', max_weight: 174, in_production: true)
-      alias_ = axiom.discs.create!(name: 'Alias', max_weight: 178, in_production: false)
-
-      expect(axiom.discs_above_weight_alpha_sort(172)).to eq([alias_, proxy])
     end
 
     it '#discs_alpha_sort' do
